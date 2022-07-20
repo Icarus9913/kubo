@@ -107,10 +107,20 @@ You can now check what blocks have been created by:
   QmerURi9k4XzKCaaPbsK6BL5pMEjF7PGphjDvkkjDtsVf3 868
   QmQB28iwSriSUSMqG2nXDTLtdPHgWb4rebBrU7Q1j4vxPv 338
 
-Finally, a note on hash determinism. While not guaranteed, adding the same
-file/directory with the same flags will almost always result in the same output
-hash. However, almost all of the flags provided by this command (other than pin,
-only-hash, and progress/status related flags) will change the final hash.
+Finally, a note on hash (CID) determinism and 'ipfs add' command.
+
+Given the same input and same add parameters, you will ALWAYS get the same CID.
+What is not guaranteed is for the implicit defaults of 'ipfs add' to remain the
+same in future Kubo releases, or for other IPFS software to use the same import
+parameters as Kubo.
+
+Almost all the flags provided by this command (other than pin, only-hash,
+and progress/status related flags) will change the final CID. If you care
+about being able to reproduce the CID in a future release of Kubo, or in other
+IPFS software, write down and/or always explicitly set the same 'add' parameters.
+
+If you need to backup or transport a CID or a DAG using a non-IPFS medium,
+CID can be preserved with CAR files: see 'dag export' and 'dag import'.
 `,
 	},
 
